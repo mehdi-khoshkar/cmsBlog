@@ -174,6 +174,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // Laravel FileManager
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+      // SEOTools
+      Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
     ],
 
@@ -225,6 +230,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+         // Laravel FileManager
+        'Image' => Intervention\Image\Facades\Image::class,
+           // SEOTools
+           'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 
     ],
 

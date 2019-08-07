@@ -1,6 +1,7 @@
 
+
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -9,31 +10,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/manage/assets/images/favicon.png">
-    <title>Material Pro Admin Template - Bootstrap 4 Admin Template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/materialpro/" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Bootstrap Core CSS -->
-    <link href="/manage/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/manage/assets/plugins/bootstrap-rtl/css/rtl/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
     <link href="/manage/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="/manage/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
     <link href="/manage/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <link href="/manage/assets/plugins/css-chart/css-chart.css" rel="stylesheet">
-    <!-- Vector CSS -->
-    <link href="/manage/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <!-- Calendar CSS -->
-    <link href="/manage/assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" />
+    <!-- toast CSS -->
+    <link href="/manage/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/manage/html/css/style.css" rel="stylesheet">
+    <link href="/manage/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="/manage/html/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="/manage/css/colors/blue.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-85622565-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -81,119 +97,10 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
+                    <ul class="navbar-nav mr-auto mt-md-0 ">
                         <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item hidden-sm-down search-box">
-                            <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
-                            <div class="dropdown-menu scale-up-left">
-                                <ul class="mega-dropdown-menu row">
-                                    <li class="col-lg-3 col-xlg-2 m-b-30">
-                                        <h4 class="m-b-20">CAROUSEL</h4>
-                                        <!-- CAROUSEL -->
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <div class="container"> <img class="d-block img-fluid" src="/manage/assets/images/big/img1.jpg" alt="First slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="/manage/assets/images/big/img2.jpg" alt="Second slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="/manage/assets/images/big/img3.jpg" alt="Third slide"></div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                                        </div>
-                                        <!-- End CAROUSEL -->
-                                    </li>
-                                    <li class="col-lg-3 m-b-30">
-                                        <h4 class="m-b-20">ACCORDION</h4>
-                                        <!-- Accordian -->
-                                        <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingOne">
-                                                    <h5 class="mb-0">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Collapsible Group Item #1
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingTwo">
-                                                    <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                  Collapsible Group Item #2
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingThree">
-                                                    <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                  Collapsible Group Item #3
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="col-lg-3  m-b-30">
-                                        <h4 class="m-b-20">CONTACT US</h4>
-                                        <!-- Contact -->
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter email"> </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                        </form>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-4 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Messages -->
-                        <!-- ============================================================== -->
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="icon-arrow-left-circle"></i></a> </li>
                         <!-- ============================================================== -->
                         <!-- Comment -->
                         <!-- ============================================================== -->
@@ -201,7 +108,7 @@
                             <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox scale-up">
+                            <div class="dropdown-menu mailbox animated bounceInDown">
                                 <ul>
                                     <li>
                                         <div class="drop-title">Notifications</div>
@@ -250,7 +157,7 @@
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                             </a>
-                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up" aria-labelledby="2">
+                            <div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="2">
                                 <ul>
                                     <li>
                                         <div class="drop-title">You have 4 new messages</div>
@@ -259,25 +166,25 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="/manage/assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="/manage/assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online float-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="/manage/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="/manage/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy float-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="/manage/assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="/manage/assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away float-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="/manage/assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="user-img"> <img src="/manage/assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline float-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
                                             </a>
@@ -293,11 +200,113 @@
                         <!-- End Messages -->
                         <!-- ============================================================== -->
                         <!-- ============================================================== -->
-                        <!-- Profile -->
+                        <!-- Messages -->
                         <!-- ============================================================== -->
+                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
+                            <div class="dropdown-menu animated bounceInDown">
+                                <ul class="mega-dropdown-menu row">
+                                    <li class="col-lg-3 col-xlg-2 mb-4">
+                                        <h4 class="mb-3">CAROUSEL</h4>
+                                        <!-- CAROUSEL -->
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <div class="container"> <img class="d-block img-fluid" src="/manage/assets/images/big/img1.jpg" alt="First slide"></div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="container"><img class="d-block img-fluid" src="/manage/assets/images/big/img2.jpg" alt="Second slide"></div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="container"><img class="d-block img-fluid" src="/manage/assets/images/big/img3.jpg" alt="Third slide"></div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                                        </div>
+                                        <!-- End CAROUSEL -->
+                                    </li>
+                                    <li class="col-lg-3 mb-4">
+                                        <h4 class="mb-3">ACCORDION</h4>
+                                        <!-- Accordian -->
+                                        <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                  Collapsible Group Item #1
+                                                </a>
+                                              </h5> </div>
+                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingTwo">
+                                                    <h5 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                  Collapsible Group Item #2
+                                                </a>
+                                              </h5> </div>
+                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" role="tab" id="headingThree">
+                                                    <h5 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                  Collapsible Group Item #3
+                                                </a>
+                                              </h5> </div>
+                                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-lg-3  mb-4">
+                                        <h4 class="mb-3">CONTACT US</h4>
+                                        <!-- Contact -->
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Enter email"> </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                        </form>
+                                    </li>
+                                    <li class="col-lg-3 col-xlg-4 mb-4">
+                                        <h4 class="mb-3">List style</h4>
+                                        <!-- List style -->
+                                        <ul class="list-style-none">
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item hidden-sm-down">
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a> </form>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/manage/assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
@@ -318,12 +327,9 @@
                                 </ul>
                             </div>
                         </li>
-                        <!-- ============================================================== -->
-                        <!-- Language -->
-                        <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
+                            <div class="dropdown-menu  dropdown-menu-right animated bounceInDown"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
                         </li>
                     </ul>
                 </div>
@@ -339,14 +345,18 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- User profile -->
-                <div class="user-profile" style="background: url(/manage/assets/images/background/user-info.jpg) no-repeat;">
+                <div class="user-profile">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="/manage/assets/images/users/profile.png" alt="user" /> </div>
+                    <div class="profile-img"> <img src="/manage/assets/images/users/1.jpg" alt="user" /> </div>
                     <!-- User profile text-->
-                    <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
-                        <div class="dropdown-menu animated flipInY"> <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                    <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe <span class="caret"></span></a>
+                        <div class="dropdown-menu animated flipInY">
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
+                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
                             <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                            <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>
+                            <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End User profile text-->
@@ -354,80 +364,22 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">PERSONAL</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                        <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">داشبورد <span class="label label-rounded label-success">5</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Dashboard 1</a></li>
-                                <li><a href="index2.html">Dashboard 2</a></li>
-                                <li><a href="index3.html">Dashboard 3</a></li>
-                                <li><a href="index4.html">Dashboard 4</a></li>
-                                <li><a href="index5.html">Dashboard 5</a></li>
-                                <li><a href="index6.html">Dashboard 6</a></li>
+                                <li><a href="{{ route('admin.dashboard') }}">داشبورد</a></li>
+                                <li><a href="{{ route('admin.profile') }}">پروفایل</a></li>
+                             
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Template Demos</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="/manage/minisidebar/index.html">Minisidebar</a></li>
-                                <li><a href="/manage/horizontal/index2.html">Horizontal</a></li>
-                                <li><a href="/manage/material/index3.html">Material Version</a></li>
-                                <li><a href="/manage/material-rtl/index4.html">RTL Version</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Apps</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.html">Calendar</a></li>
-                                <li><a href="app-chat.html">Chat app</a></li>
-                                <li><a href="app-ticket.html">Support Ticket</a></li>
-                                <li><a href="app-contact.html">Contact / Employee</a></li>
-                                <li><a href="app-contact2.html">Contact Grid</a></li>
-                                <li><a href="app-contact-detail.html">Contact Detail</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Inbox</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-email.html">Mailbox</a></li>
-                                <li><a href="app-email-detail.html">Mailbox Detail</a></li>
-                                <li><a href="app-compose.html">Compose Mail</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Ui Elements</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-cards.html">Cards</a></li>
-                                <li><a href="ui-user-card.html">User Cards</a></li>
-                                <li><a href="ui-buttons.html">Buttons</a></li>
-                                <li><a href="ui-modals.html">Modals</a></li>
-                                <li><a href="ui-tab.html">Tab</a></li>
-                                <li><a href="ui-tooltip-popover.html">Tooltip &amp; Popover</a></li>
-                                <li><a href="ui-tooltip-stylish.html">Tooltip stylish</a></li>
-                                <li><a href="ui-sweetalert.html">Sweet Alert</a></li>
-                                <li><a href="ui-notification.html">Notification</a></li>
-                                <li><a href="ui-progressbar.html">Progressbar</a></li>
-                                <li><a href="ui-nestable.html">Nestable</a></li>
-                                <li><a href="ui-range-slider.html">Range slider</a></li>
-                                <li><a href="ui-timeline.html">Timeline</a></li>
-                                <li><a href="ui-typography.html">Typography</a></li>
-                                <li><a href="ui-horizontal-timeline.html">Horizontal Timeline</a></li>
-                                <li><a href="ui-session-timeout.html">Session Timeout</a></li>
-                                <li><a href="ui-session-ideal-timeout.html">Session Ideal Timeout</a></li>
-                                <li><a href="ui-bootstrap.html">Bootstrap Ui</a></li>
-                                <li><a href="ui-breadcrumb.html">Breadcrumb</a></li>
-                                <li><a href="ui-bootstrap-switch.html">Bootstrap Switch</a></li>
-                                <li><a href="ui-list-media.html">List Media</a></li>
-                                <li><a href="ui-ribbons.html">Ribbons</a></li>
-                                <li><a href="ui-grid.html">Grid</a></li>
-                                <li><a href="ui-carousel.html">Carousel</a></li>
-                                <li><a href="ui-date-paginator.html">Date-paginator</a></li>
-                                <li><a href="ui-dragable-portlet.html">Dragable Portlet</a></li>
-                                <li><a href="ui-scrollspy.html">Scrollspy</a></li>
-                                <li><a href="ui-toasts.html">Toasts</a></li>
-                                <li><a href="ui-spinner.html">Spinner</a></li>
-                            </ul>
-                        </li>
+                        
                         <li class="nav-devider"></li>
-                        <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Forms</span></a>
+                        <li class="nav-small-cap"> مطالب</li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">مطلب</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="form-basic.html">Basic Forms</a></li>
-                                <li><a href="form-layout.html">Form Layouts</a></li>
+                            <li><a href="{{route('adminPanel.post.index')}}">مشاهده مطالب</a></li>
+                                <li><a href="{{route('adminPanel.post.create')}}">ایجاد مطلب</a></li>
                                 <li><a href="form-addons.html">Form Addons</a></li>
                                 <li><a href="form-material.html">Form Material</a></li>
                                 <li><a href="form-float-input.html">Floating Lable</a></li>
@@ -447,7 +399,8 @@
                                 <li><a href="form-tinymce.html">Tinymce Editor</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tables</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tables</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="table-basic.html">Basic Tables</a></li>
                                 <li><a href="table-layout.html">Table Layouts</a></li>
@@ -459,7 +412,8 @@
                                 <li><a href="table-editable-table.html">Editable Table</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Widgets</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Widgets</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="widget-apps.html">Widget Apps</a></li>
                                 <li><a href="widget-data.html">Widget Data</a></li>
@@ -468,7 +422,8 @@
                         </li>
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">EXTRA COMPONENTS</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Page Layout</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Page Layout</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="layout-single-column.html">1 Column</a></li>
                                 <li><a href="layout-fix-header.html">Fix header</a></li>
@@ -478,7 +433,8 @@
                                 <li><a href="layout-logo-center.html">Logo in Center</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Sample Pages</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Sample Pages</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="starter-kit.html">Starter Kit</a></li>
                                 <li><a href="pages-blank.html">Blank page</a></li>
@@ -516,7 +472,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Charts</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Charts</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="chart-morris.html">Morris Chart</a></li>
                                 <li><a href="chart-chartist.html">Chartis Chart</a></li>
@@ -529,7 +486,8 @@
                                 <li><a href="chart-peity.html">Peity Charts</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-brush"></i><span class="hide-menu">Icons</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-brush"></i><span class="hide-menu">Icons</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="icon-material.html">Material Icons</a></li>
                                 <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
@@ -540,17 +498,20 @@
                                 <li><a href="icon-flag.html">Flag Icons</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Maps</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Maps</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="map-google.html">Google Maps</a></li>
                                 <li><a href="map-vector.html">Vector Maps</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="#">item 1.1</a></li>
                                 <li><a href="#">item 1.2</a></li>
-                                <li> <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="#">item 1.3.1</a></li>
                                         <li><a href="#">item 1.3.2</a></li>
@@ -568,9 +529,13 @@
             <!-- End Sidebar scroll-->
             <!-- Bottom points-->
             <div class="sidebar-footer">
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+            </div>
             <!-- End Bottom points-->
         </aside>
         <!-- ============================================================== -->
@@ -580,472 +545,19 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-7 col-4 align-self-center">
-                        <div class="d-flex m-t-10 justify-content-end">
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>THIS MONTH</small></h6>
-                                    <h4 class="m-t-0 text-info">$58,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="monthchart"></div>
-                                </div>
-                            </div>
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>LAST MONTH</small></h6>
-                                    <h4 class="m-t-0 text-primary">$48,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="lastmonthchart"></div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="card-group">
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h4 class="text-center">Unique Visit</h4>
-                            <div id="spark8">
-                                <canvas width="99" height="70" style="display: inline-block; width: 99px; height: 70px; vertical-align: top;"></canvas>
-                            </div>
-                        </div>
-                        <div class="box b-t text-center">
-                            <h4 class="font-medium m-b-0"><i class="ti-angle-up text-success"></i>  12456</h4></div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h4 class="text-center">Total Visit</h4>
-                            <div id="spark9">
-                                <canvas width="99" height="70" style="display: inline-block; width: 99px; height: 70px; vertical-align: top;"></canvas>
-                            </div>
-                        </div>
-                        <div class="box b-t text-center">
-                            <h4 class="font-medium m-b-0"><i class="ti-angle-down text-danger"></i> 456</h4></div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h4 class="text-center">Bounce rate</h4>
-                            <div id="spark10">
-                                <canvas width="99" height="70" style="display: inline-block; width: 99px; height: 70px; vertical-align: top;"></canvas>
-                            </div>
-                        </div>
-                        <div class="box b-t text-center">
-                            <h4 class="font-medium m-b-0"><i class="ti-angle-up text-success"></i>  12456</h4></div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h4 class="text-center">Page Views</h4>
-                            <div id="spark11">
-                                <canvas width="99" height="70" style="display: inline-block; width: 99px; height: 70px; vertical-align: top;"></canvas>
-                            </div>
-                        </div>
-                        <div class="box b-t text-center">
-                            <h4 class="font-medium m-b-0"><i class="ti-angle-down text-danger"></i> 456</h4></div>
-                    </div>
-                    <!-- Column -->
-                </div>
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Total Visits</h4>
-                                <div id="visitfromworld" style="width:100%!important; height:415px"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Browser Stats</h4>
-                                <table class="table browser m-t-30 no-border">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:40px"><img src="/manage/assets/images/browser/chrome-logo.png" alt=logo /></td>
-                                            <td>Google Chrome</td>
-                                            <td class="text-right"><span class="label label-light-info">23%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/manage/assets/images/browser/firefox-logo.png" alt=logo /></td>
-                                            <td>Mozila Firefox</td>
-                                            <td class="text-right"><span class="label label-light-success">15%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/manage/assets/images/browser/safari-logo.png" alt=logo /></td>
-                                            <td>Apple Safari</td>
-                                            <td class="text-right"><span class="label label-light-primary">07%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/manage/assets/images/browser/internet-logo.png" alt=logo /></td>
-                                            <td>Internet Explorer</td>
-                                            <td class="text-right"><span class="label label-light-warning">09%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/manage/assets/images/browser/opera-logo.png" alt=logo /></td>
-                                            <td>Opera mini</td>
-                                            <td class="text-right"><span class="label label-light-danger">23%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="/manage/assets/images/browser/internet-logo.png" alt=logo /></td>
-                                            <td>Microsoft edge</td>
-                                            <td class="text-right"><span class="label label-light-megna">09%</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Row -->
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex no-block align-items-center">
-                                    <h4 class="card-title">Total Revenue</h4>
-                                    <div class="ml-auto">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <h6 class="text-muted"><i class="fa fa-circle m-r-5" style="color:#51bdff"></i>2015</h6>
-                                            </li>
-                                            <li>
-                                                <h6 class="text-muted"><i class="fa fa-circle m-r-5" style="color:#11a0f8"></i>2016</h6>
-                                            </li>
-                                            <li>
-                                                <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-info"></i>2017</h6>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="total-sales" style="height: 365px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Sales Prediction</h4>
-                                        <div class="d-flex flex-row">
-                                            <div class="align-self-center">
-                                                <span class="display-6 text-primary">$3528</span>
-                                                <h6 class="text-muted">10% Increased</h6>
-                                                <h5>(150-165 Sales)</h5>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div id="gauge-chart" style=" width:150px; height:150px;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Sales Difference</h4>
-                                        <div class="d-flex flex-row">
-                                            <div class="align-self-center">
-                                                <span class="display-6 text-success">$4316</span>
-                                                <h6 class="text-muted">10% Increased</h6>
-                                                <h5>(150-165 Sales)</h5>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="ct-chart" style="width:120px; height: 120px;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                </div>
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="calendar"></div>
-                                <!-- BEGIN MODAL -->
-                                <div class="modal fade none-border" id="my-event">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title"><strong>Add Event</strong></h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            </div>
-                                            <div class="modal-body"></div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal Add Category -->
-                                <div class="modal fade none-border" id="add-new-event">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title"><strong>Add</strong> a category</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label class="control-label">Category Name</label>
-                                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label class="control-label">Choose Category Color</label>
-                                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-                                                                <option value="success">Success</option>
-                                                                <option value="danger">Danger</option>
-                                                                <option value="info">Info</option>
-                                                                <option value="primary">Primary</option>
-                                                                <option value="warning">Warning</option>
-                                                                <option value="inverse">Inverse</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-                                                <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END MODAL -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Row -->
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Recent Chats</h4>
-                                <div class="chat-box">
-                                    <!--chat Row -->
-                                    <ul class="chat-list">
-                                        <!--chat Row -->
-                                        <li>
-                                            <div class="chat-img"><img src="/manage/assets/images/users/1.jpg" alt="user" /></div>
-                                            <div class="chat-content">
-                                                <h5>James Anderson</h5>
-                                                <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing & type setting industry.</div>
-                                            </div>
-                                            <div class="chat-time">10:56 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li>
-                                            <div class="chat-img"><img src="/manage/assets/images/users/2.jpg" alt="user" /></div>
-                                            <div class="chat-content">
-                                                <h5>Bianca Doe</h5>
-                                                <div class="box bg-light-success">It’s Great opportunity to work.</div>
-                                            </div>
-                                            <div class="chat-time">10:57 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="odd">
-                                            <div class="chat-content">
-                                                <div class="box bg-light-inverse">I would love to join the team.</div>
-                                                <br/>
-                                            </div>
-                                            <div class="chat-time">10:58 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="odd">
-                                            <div class="chat-content">
-                                                <div class="box bg-light-inverse">Whats budget of the new project.</div>
-                                                <br/>
-                                            </div>
-                                            <div class="chat-time">10:59 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li>
-                                            <div class="chat-img"><img src="/manage/assets/images/users/3.jpg" alt="user" /></div>
-                                            <div class="chat-content">
-                                                <h5>Angelina Rhodes</h5>
-                                                <div class="box bg-light-primary">Well we have good budget for the project</div>
-                                            </div>
-                                            <div class="chat-time">11:00 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body b-t">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <textarea placeholder="Type your message here" class="form-control b-0"></textarea>
-                                    </div>
-                                    <div class="col-4 text-right">
-                                        <button type="button" class="btn btn-info btn-circle btn-lg"><i class="far fa-paper-plane"></i> </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Recent Messages</h4>
-                                <div class="message-box">
-                                    <div class="message-widget">
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/manage/assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been.</span> <span class="time">9:30 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/manage/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Arijit Sinh</h5> <span class="mail-desc">Simply dummy text of the printing and typesetting industry.</span> <span class="time">9:08 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/manage/assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/manage/assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Welcome to the Elite Admin</span> <span class="time">9:30 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/manage/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Row -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <div class="right-sidebar">
-                    <div class="slimscrollright">
-                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
-                        <div class="r-panel-body">
-                            <ul id="themecolors" class="m-t-20">
-                                <li><b>With Light sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
-                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
-                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
-                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
-                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
-                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
-                            </ul>
-                            <ul class="m-t-20 chatonline">
-                                <li><b>Chat option</b></li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/manage/assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+     
+
+            @yield('dashboard')
+
+            @yield('profile')
+
+            @yield('post_create')
+
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2019 Material Pro Admin by wrappixel.com
+                © 2019 Monster Admin by wrappixel.com
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -1063,44 +575,60 @@
     <!-- ============================================================== -->
     <script src="/manage/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/manage/assets/plugins/popper/popper.min.js"></script>
+    <script src="/manage/assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="/manage/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/manage/html/js/jquery.slimscroll.js"></script>
+    <script src="/manage/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
-    <script src="/manage/html/js/waves.js"></script>
+    <script src="/manage/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="/manage/html/js/sidebarmenu.js"></script>
+    <script src="/manage/js/sidebarmenu.js"></script>
     <!--stickey kit -->
     <script src="/manage/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="/manage/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="/manage/html/js/custom.min.js"></script>
+    <script src="/manage/js/custom.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <!-- chartist chart -->
     <script src="/manage/assets/plugins/chartist-js/dist/chartist.min.js"></script>
     <script src="/manage/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chart JS -->
     <script src="/manage/assets/plugins/echarts/echarts-all.js"></script>
-    <!-- Vector map JavaScript -->
-    <script src="/manage/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="/manage/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- Calendar JavaScript -->
-    <script src="/manage/assets/plugins/moment/moment.js"></script>
-    <script src='/manage/assets/plugins/calendar/dist/fullcalendar.min.js'></script>
-    <script src="/manage/assets/plugins/calendar/dist/jquery.fullcalendar.js"></script>
-    <script src="/manage/assets/plugins/calendar/dist/cal-init.js"></script>
-    <!-- sparkline chart -->
-    <script src="/manage/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script src="/manage/html/js/dashboard.js"></script>
+    <script src="/manage/assets/plugins/toast-master/js/jquery.toast.js"></script>
+    <!-- Chart JS -->
+    <script src="/manage/js/dashboard1.js"></script>
+<?php
+    $routeName = Request::route()->getName();
+
+    if( $routeName== 'admin.dashboard'){
+    ?>
+    <script src="/manage/js/toastr.js"></script>
+    <script>
+    $.toast({
+        heading: 'به پنل مدیریت خوش آمدید',
+        // text: 'Use the predefined ones, or specify a custom position object.',
+        position: 'top-right',
+        loaderBg: '#ff6849',
+        icon: 'info',
+        hideAfter: 3000,
+        stack: 6
+    });
+    </script>
+    <?php } ?>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="/manage/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <!-- laravel filemanager -->
+   <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+   <script type="text/javascript">
+    //my code here
+    $('#pic').filemanager('image');
+
+</script>
+
 </body>
 
 </html>
-
-
-
